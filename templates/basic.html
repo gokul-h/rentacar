@@ -1,0 +1,34 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:100,300,400,500,700" rel="stylesheet">
+    <title>Rent a Car {% block title %} {% endblock %}</title>
+    {% block head %}
+    {% endblock %}
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fontawesome.css' %}">
+    <link rel="stylesheet" href="{% static 'css/tooplate-main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.css' %}">
+</head>
+
+<body>
+<!-- Navigation -->
+<nav class="navbar static-top">
+    <a class="navbar-brand" href=""><img src="{% static 'images/header-logo.png' %}" alt="Logo"></a>
+</nav>
+{% block content %}
+
+{% endblock %}
+
+<!-- JavaScript -->
+<script src="{% static 'jquery/jquery.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+<script src="{% static 'js/custom.js' %}"></script>
+<script src="{% static 'js/owl.js' %}"></script>
+
+</body>
+</html>

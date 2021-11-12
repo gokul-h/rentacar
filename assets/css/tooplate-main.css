@@ -1,11 +1,10 @@
-/* 
-
-Tooplate 2114 Pixie
-
-https://www.tooplate.com/view/2114-pixie
+/*
 
 */
-
+img {
+    max-width: 100%;
+    max-height: 100%;
+}
 body {
 	font-family: 'Roboto', sans-serif;
 	transition: all 0.5s;
@@ -77,7 +76,6 @@ a {
 }
 .bg-dark {
 	background-color: #fff!important;
-	border-bottom: 1px solid #eee;
 }
 #navbarResponsive {
 	z-index: 999;
@@ -116,7 +114,6 @@ a {
 	background-image: none;
 }
 .navbar-dark .navbar-toggler {
-	border-color: #3a8bcd;
 	background-color: #3a8bcd;	
 	height: 50px;
 	outline: none;

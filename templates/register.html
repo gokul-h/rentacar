@@ -1,10 +1,68 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'base.html' %}
+{% block title %}Register{% endblock %}
+{% load static %}
+
+{% block head %}
+    <link href="{% static 'css/registration.css' %}" rel="stylesheet">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+{% endblock %}
+
+{% block content %}
+    <br><br>
+    <div class="container register">
+        <div class="row">
+            <div class="col-md-3 register-left">
+                <h3>Sign Up Now !</h3>
+            </div>
+            <div class="col-md-9 register-right">
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                        <h3 class="register-heading">Create an account!</h3>
+                        <form action="register" method="post">
+                            {% csrf_token %}
+                            <div class="row register-form">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="first_name"
+                                               placeholder="First Name *" value=""/>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="username" placeholder="Username *"
+                                               value=""/>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" name="password1"
+                                               placeholder="Password *" value=""/>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" name="last_name"
+                                               placeholder="Last Name *" value=""/>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="email" class="form-control" name="email" placeholder="Your Email *"
+                                               value=""/>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" name="password2"
+                                               placeholder="Confirm Password *" value=""/>
+                                    </div>
+                                    <div class="form-group">
+                                        {% for message in messages %}
+                                            <input type="text" class="form-control btn btn-outline-danger" name="message"
+                                                   placeholder="*" value="{{ message }}" readonly>
+                                        {% endfor %}
+                                    </div>
+                                    <input type="submit" class="btnRegister" value="Register"/><br>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

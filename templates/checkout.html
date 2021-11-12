@@ -1,10 +1,49 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}<br>
+    <div class="d-flex justify-content-center container mt-5">
+        <div class="card p-3 bg-white">
+            <div class="text-center"><h3>Confirm your order</h3></div>
+            <hr>
+            <div class="about-product text-center mt-2"><img src="{{ carval.image.url }}" width="300">
+                <div>
+                    <h4>{{ carval.name }}</h4>
+                    <h6 class="mt-0 text-black-50">{{ carval.category }}</h6>
+                </div>
+            </div>
+            <div class="stats mt-2">
+                <div class="d-flex justify-content-between p-price">
+                    <span>Base Price</span><span>₹{{ carval.price }}</span></div>
+                <div class="d-flex justify-content-between p-price"><span>Weeks</span><span>1</span></div>
+                <div class="d-flex justify-content-between p-price"><span>GST(18%)</span><span
+                        id="answer">₹{{ gst }}</span></div>
+            </div>
+            <div class="d-flex justify-content-between total font-weight-bold mt-4">
+                <span>Total</span><span>₹{{ total }}</span></div>
+            <br>
+            {% if payment %}
+                <div class="text-center mx-auto">
+                    <form action="../payment/success" method="POST">
+                        <script
+                                src="https://checkout.razorpay.com/v1/checkout.js"
+                                {#add Razor pay key here#}
+                                data-key=""
+                                data-amount="{{ payment.amount }}"
+                                data-currency="INR"
+                                data-order_id="{{ payment.id }}"
+                                data-buttontext="Pay with Razorpay"
+                                data-name="Rent a Car"
+                                data-description="Rent a car in your City"
+                                data-image="{% static 'images/header-logo.png' %}"
+                                data-prefill.name="{{ username }}"
+                                data-prefill.email="{{ usermail }}"
+                                data-prefill.contact="1234567891"
+                                data-theme.color="#F37254"
+                        ></script>
+                        <input type="hidden" custom="Hidden Element" name="hidden">
+                    </form>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}
